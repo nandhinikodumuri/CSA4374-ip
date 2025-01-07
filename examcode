@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0c0ce8;
+        }
+        header {
+            background: #333;
+            color: #933b3b;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav {
+            background: #555;
+            color: #e10909;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #e00909;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            padding: 20px;
+        }
+        form {
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        button {
+            background: #333;
+            color: #655d5d;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #555;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Library Admin Panel</h1>
+    </header>
+
+    <!-- Login Section -->
+    <div id="login-section" class="container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="button" onclick="login()">Login</button>
+        </form>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="admin-panel" class="container hidden">
+        <nav>
+            <a href="#add-book">Add Book</a>
+            <a href="#update-delete-book">Update/Delete Book</a>
+            <a href="#issue-book">Issue Book</a>
+            <a href="#return-book">Return Book</a>
+            <a href="#fine">Make Fine</a>
+            <a href="#update-material">Update Material</a>
+        </nav>
+
+        <!-- Add Book Section -->
+        <section id="add-book">
+            <h2>Add Book</h2>
+            <form>
+                <label for="book-title">Book Title:</label>
+                <input type="text" id="book-title" name="book-title" required>
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" required>
+                <label for="isbn">ISBN:</label>
+                <input type="text" id="isbn" name="isbn" required>
+                <button type="submit">Add Book</button>
+            </form>
+        </section>
+
+        <!-- Update/Delete Book Section -->
+        <section id="update-delete-book">
+            <h2>Update/Delete Book</h2>
+            <form>
+                <label for="search-book">Search Book:</label>
+                <input type="text" id="search-book" name="search-book" required>
+                <button type="submit">Search</button>
+                <p>Once the book is found, you can update or delete it here.</p>
+            </form>
+        </section>
+
+        <!-- Issue Book Section -->
+        <section id="issue-book">
+            <h2>Issue Book</h2>
+            <form>
+                <label for="student-id">Student ID:</label>
+                <input type="text" id="student-id" name="student-id" required>
+                <label for="book-id">Book ID:</label>
+                <input type="text" id="book-id" name="book-id" required>
+                <button type="submit">Issue Book</button>
+            </form>
+        </section>
+
+        <!-- Return Book Section -->
+        <section id="return-book">
+            <h2>Return Book</h2>
+            <form>
+                <label for="return-book-id">Book ID:</label>
+                <input type="text" id="return-book-id" name="return-book-id" required>
+                <button type="submit">Return Book</button>
+            </form>
+        </section>
+
+        <!-- Make Fine Section -->
+        <section id="fine">
+            <h2>Make Fine</h2>
+            <form>
+                <label for="student-id-fine">Student ID:</label>
+                <input type="text" id="student-id-fine" name="student-id-fine" required>
+                <label for="days-overdue">Days Overdue:</label>
+                <input type="number" id="days-overdue" name="days-overdue" required>
+                <button type="submit">Calculate Fine</button>
+            </form>
+        </section>
+
+        <!-- Update Material Section -->
+        <section id="update-material">
+            <h2>Update Material</h2>
+            <form>
+                <label for="year">Year:</label>
+                <select id="year" name="year" required>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                </select>
+                <label for="semester">Semester:</label>
+                <select id="semester" name="semester" required>
+                    <option value="1">Semester 1</option>
+                    <option value="2">Semester 2</option>
+                </select>
+                <button type="submit">Update Material</button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Validate login credentials
+            if (username === '192110076' && password === '0076') {
+                document.getElementById('login-section').classList.add('hidden');
+                document.getElementById('admin-panel').classList.remove('hidden');
+                alert('Login successful!');
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>
